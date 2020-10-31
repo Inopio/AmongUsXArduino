@@ -1,0 +1,1 @@
+clang .\Build.cpp -std=c++17 -o build.exe        
