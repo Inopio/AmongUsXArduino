@@ -1,10 +1,9 @@
-#define BS_implementation
-#include "BS.hpp"
+#include "Ease.hpp"
 
 //std=c++17
 
-BuildSelf::Build build(BuildSelf::Flags flags) noexcept {
-    using namespace BuildSelf;
+Build build(Flags flags) noexcept {
+   
 
     Build b = Build::get_default(flags);
     b.name = "whatsMyRole";
