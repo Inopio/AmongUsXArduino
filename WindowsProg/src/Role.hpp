@@ -3,9 +3,8 @@
 #include <cstdlib>
 #include "stb_image.h"
 
-#define COM3 3
-#define IMPOSTOR 0
-#define CREWMATE 1
+#define IMPOSTOR 1
+#define CREWMATE 2
 
 extern COLORREF getPixelColor();
 

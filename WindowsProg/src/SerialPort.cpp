@@ -73,6 +73,7 @@ std::vector<uint8_t> Serial_Port::read(size_t n) noexcept {
 
     return result;
 }
+
 std::vector<uint8_t> Serial_Port::wait_read(size_t n) noexcept {
     size_t bytes_read{ 0 };
 
@@ -107,6 +108,6 @@ size_t Serial_Port::write(const std::vector<uint8_t>& data) noexcept {
 
     if (!WriteFile(platform.handle, (void*)data.data(), data.size(), &send, 0))
         ClearCommError(platform.handle, &platform.errors, &platform.status);
-
+    
     return send;
 }

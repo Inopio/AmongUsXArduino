@@ -2,15 +2,17 @@
 #include <string.h>
 #include <Arduino.h>
 
-#define IMPOSTOR 0
-#define CREWMATE 1
+#define IMPOSTOR 1
+#define CREWMATE 2
 #define RECEIVER_PIN  8
 #define IR 3
 #define CarrierFreqInterval 11
 
 int byteToRead;
+int relayPin = 4;
 IRsend irsend;
 IRrecv receiver(RECEIVER_PIN);
+uint8_t buff;
 
 
 //code taken on https://forum.arduino.cc/index.php?topic=626792.0
@@ -83,20 +85,28 @@ void transmit(uint32_t data) {
 }
 
 void setup() {
-    Serial.begin(9600);
-    pinMode(IR, OUTPUT);
-    digitalWrite(IR, LOW);
+  Serial.begin(9600);
+  pinMode(IR, OUTPUT);
+  pinMode(relayPin,INPUT_PULLUP);
+  pinMode(relayPin,OUTPUT);
+  digitalWrite(IR, LOW);
 }
 
 
 void loop(){
-    if (Serial.available() > 0){
-        byteToRead = Serial.read();
-        if(byteToRead == IMPOSTOR){
-            transmit(0xff6897);
-        }else if(byteToRead == CREWMATE){
-            transmit(0xff9867);
-        }
-        Serial.println(byteToRead == IMPOSTOR ? "Impostor" : "Crewmate");
+  
+  if (Serial.available()>0){
+    byteToRead = Serial.read();
+    if(byteToRead == IMPOSTOR){
+      Serial.write("Debug : send red light !");
+      transmit(0xff6897);
+      delay(500);
+    }else if(byteToRead == CREWMATE){
+      Serial.write("Debug : send green light !");
+      transmit(0xff9867);
+      delay(500);
+    }else{
+      Serial.write("ELSE...");
     }
+  }
 }
