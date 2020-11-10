@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <windows.h>
-#include <cstdlib
+#include <cstdlib>
 
 #define IMPOSTOR 1
 #define CREWMATE 2
