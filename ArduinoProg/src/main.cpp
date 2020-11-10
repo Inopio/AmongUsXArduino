@@ -98,15 +98,15 @@ void loop(){
   if (Serial.available()>0){
     byteToRead = Serial.read();
     if(byteToRead == IMPOSTOR){
-      Serial.write("Debug : send red light !");
+      //Serial.write("Debug : send red light !");
       transmit(0xff6897);
-      delay(500);
+      delay(250);
     }else if(byteToRead == CREWMATE){
-      Serial.write("Debug : send green light !");
+      //Serial.write("Debug : send green light !");
       transmit(0xff9867);
-      delay(500);
+      delay(250);
     }else{
-      Serial.write("ELSE...");
+      //Serial.write("ELSE...");
     }
   }
 }
