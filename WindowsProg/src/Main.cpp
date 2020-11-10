@@ -3,8 +3,8 @@
 #include "SerialPort.hpp"
 
 /*
-*
-*
+* Get the pixel value of the settings button
+* And map button (that are fixed objects)
 */
 bool isInGame(){
     int r1,r2,r3,g1,g2,g3,b1,b2,b3;
